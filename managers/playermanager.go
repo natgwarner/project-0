@@ -1,9 +1,9 @@
 package managers
 
-//Hp is the base value of the player's hitpoints; used for initialization.
+//Hp is the base value of the player's hitpoints.
 var Hp int
 
-//Money is the int value of the player's wallet; used for initialization.
+//Money is the int value of the player's wallet.
 var Money int
 
 //Playerhp is the string value of the player's hitpoints; used in the Player struct.
