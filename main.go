@@ -60,7 +60,7 @@ func main() {
 	fmt.Println("\nYou take a quick peek inside yourself (and your pockets).\n" + player.Name + "\n" + player.Hitpoints + "\n" + player.Money + "\n")
 
 	fmt.Println("You clumsily tripped and fell on your face, receiving 20 damage.")
-	managers.HPRefresh(80)
+	managers.TakeDamage(20, &player)
 	fmt.Println("You now have " + managers.Playerhp + ".")
 	fmt.Println(player.Hitpoints)
 }
