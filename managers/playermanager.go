@@ -1,5 +1,7 @@
 package managers
 
+import "fmt"
+
 //Hp is the base value of the player's hitpoints.
 var Hp int
 
@@ -17,4 +19,9 @@ type Player struct {
 	Name      string
 	Hitpoints string
 	Money     string
+}
+
+//PlayerCheck allows the player to look at their current stats when they type the "check" command.
+func PlayerCheck(p *Player) {
+	fmt.Println("\nYou take a quick peek inside yourself (and your pockets).\n" + p.Name + "\n" + p.Hitpoints + "\n" + p.Money + "\n")
 }

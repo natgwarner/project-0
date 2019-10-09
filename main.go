@@ -14,7 +14,7 @@ func main() {
 	managers.Money = 0
 	//converts the hp and money vars to strings to be displayed by Player struct
 	managers.Playerhp = strconv.Itoa(managers.Hp) + " hp"
-	managers.Playermoney = strconv.Itoa(managers.Money) + " coins"
+	managers.Playermoney = strconv.Itoa(managers.Money) + " credits"
 
 	fmt.Println("Ready for adventure? Good. What's your name?")
 	fmt.Scanf("%s", &playername)
@@ -42,7 +42,7 @@ func main() {
 			fmt.Println("Okay, tell me again. What is your name?")
 			fmt.Scanf("%s", &playername)
 			confirmattempts++
-		case "status":
+		case "check":
 			fmt.Println("You tried to look inside yourself, but you don't exist yet.")
 			confirmattempts++
 		default:
@@ -57,10 +57,15 @@ func main() {
 		Money:     managers.Playermoney,
 	}
 
-	fmt.Println("\nYou take a quick peek inside yourself (and your pockets).\n" + player.Name + "\n" + player.Hitpoints + "\n" + player.Money + "\n")
+	managers.PlayerCheck(&player)
 
-	fmt.Println("You clumsily tripped and fell on your face, receiving 20 damage.")
+	fmt.Println("You clumsily trip and fall on your face, receiving 20 damage.")
 	managers.TakeDamage(20, &player)
-	fmt.Println("You now have " + managers.Playerhp + ".")
-	fmt.Println(player.Hitpoints)
+	fmt.Println("However, while you writhe against the concrete, you spot a card worth 2000 credits, lifting your spirits!")
+	managers.GetMoney(2000, &player)
+
+	managers.PlayerCheck(&player)
+	managers.InventoryCheck()
+	managers.InventoryAdd("Sword")
+	managers.InventoryCheck()
 }
