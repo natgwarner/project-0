@@ -10,7 +10,7 @@ func InventoryCheck() {
 	if len(Inventory) >= 1 {
 		fmt.Println("You search your backpack and find:")
 		for i := 0; i < len(Inventory); i++ {
-			fmt.Println(Inventory[i] + "\n")
+			fmt.Println(Inventory[i])
 		}
 	} else {
 		fmt.Println("You search your backpack, but find nothing.")
@@ -21,3 +21,7 @@ func InventoryCheck() {
 func InventoryAdd(s string) {
 	Inventory = append(Inventory, s)
 }
+
+/*func InventoryRemove() {
+
+}*/

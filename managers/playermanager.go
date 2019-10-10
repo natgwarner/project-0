@@ -2,6 +2,9 @@ package managers
 
 import "fmt"
 
+//Playername is the player's name.
+var Playername string
+
 //Hp is the base value of the player's hitpoints.
 var Hp int
 
@@ -19,6 +22,15 @@ type Player struct {
 	Name      string
 	Hitpoints string
 	Money     string
+}
+
+//NewPlayer is a constructor that creates a player.
+func NewPlayer(name string, hitpoints string, money string) Player {
+	return Player{
+		Name:      name,
+		Hitpoints: hitpoints,
+		Money:     money,
+	}
 }
 
 //PlayerCheck allows the player to look at their current stats when they type the "check" command.
