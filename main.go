@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"strconv"
 
@@ -34,7 +35,7 @@ func main() {
 				break
 			}
 			if confirmattempts == 0 {
-				fmt.Println("I see. Your name is " + managers.Playername + ". Is that correct? (Please answer 'yes' or 'no'.)")
+				fmt.Println("I see. Your name is " + managers.Playername + ". Is that correct? (Please answer 'yes' or 'no')")
 			} else if confirmattempts < 3 {
 				fmt.Println("So, your name's " + managers.Playername + ", right?")
 			} else {
@@ -43,7 +44,7 @@ func main() {
 			fmt.Scanf("%s", &confirm)
 			switch confirm {
 			case "yes":
-				fmt.Println("Excellent. Let's begin.")
+				fmt.Println("Excellent. Let's begin." + "\n")
 				a++
 			case "no":
 				fmt.Println("Okay, tell me again. What is your name?")
@@ -73,9 +74,25 @@ func main() {
 		managers.InventoryAdd("Sword")
 		managers.InventoryCheck()
 	*/
-	if managers.Scene1(&player) == 2 {
+	/*if managers.Scene1(&player) == 2 {
 		managers.Scene2(&player)
 	} else {
 		panic("It's borked.")
+	}*/
+	step1 := managers.Scene1(&player)
+
+	if step1 == 2 {
+		step2 := managers.Scene2(&player)
+		if step2 == 3 {
+			//managers.Scene3(&player)
+		} else if step2 == 4 {
+			//managers.Scene4(&player)
+		} else if step2 == 5 {
+			//managers.Scene5(&player)
+		} else {
+			log.Fatal("Scene2 somehow didn't lead to the next scene.")
+		}
+	} else {
+		log.Fatal("Scene1 somehow didn't lead to Scene2.")
 	}
 }
