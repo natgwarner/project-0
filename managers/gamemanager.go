@@ -124,6 +124,60 @@ too terribly interesting. You made up your mind and you travelled to the...`+"\n
 }
 
 //Scene3 is the skyscraper area.
-func Scene3(p *Player) {
+func Scene3(p *Player) int {
+	io.WriteString(os.Stdout,
+		`You approach the skyscraper and notice that there doesn't seem to be anyone entering or leaving. You find this curious, but that thought is quickly
+pushed from your mind as you recoil in horror. To your dismay, the skyscraper has glass paneling, and your hair looks about ten times more awful than you could
+have imagined. You sigh as you come to terms with your truly disgusting appearance before someone approaches you from the side. "Yo, you tryin' to get
+in here?" You turned and saw a woman who's hair was somehow worse than your own, chewing gum and blowing a large bubble as it broke with a pop. She turned
+to look into the building as she continued, "This building is owned by EdenTech, those bigwigs that control all the infrastructure that runs this city.
+This is their HQ, and you ain't gettin' in unless you get someone inside to let you." She places her hand on the glass before clenching it into a fist, mimicking
+a punch. "Can't break in neither, cause the drones'll getcha and chew ya up like a dog starved for weeks." You shot her a puzzled glance, and she seemed to
+understand that you had no idea what she was talking about as she sighed. "Look, just stay away from here, 'less you wanna cause trouble. If you think you might,
+go ahead and follow me. I know a place." She began to walk away and waved, and you considered following her. However, you could still visit the nightclub
+or the info kiosk from here.`,
+	)
 
+	a := 0
+	attempts := 0
+	selection := 0
+
+	for {
+		if a != 0 {
+			break
+		}
+
+		scanner := bufio.NewScanner(os.Stdin)
+		scanner.Scan()
+		line := scanner.Text()
+
+		switch line {
+		case "hint":
+			fmt.Println("Your options are 'follow', 'go to ngihtclub', and 'go to kiosk'.")
+		case "check":
+			PlayerCheck(p)
+		case "backpack":
+			InventoryCheck()
+		case "search":
+			if attempts < 1 {
+				fmt.Println("You take a look around you and find a flyer for EdenTech on the ground.")
+				InventoryAdd("EdenTech Flyer")
+				attempts++
+			} else {
+				fmt.Println("You quicly scan the area for anything interesting, but you didn't find anything.")
+			}
+		case "follow":
+			selection = 6
+			a++
+		case "go to nightclub":
+			selection = 4
+			a++
+		case "go to kiosk":
+			selection = 5
+			a++
+		default:
+			fmt.Println("You can't think of a reason why you would want to do that right now.")
+		}
+	}
+	return selection
 }
