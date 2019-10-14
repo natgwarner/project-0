@@ -1,6 +1,9 @@
 package managers
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 //Playername is the player's name.
 var Playername string
@@ -36,4 +39,10 @@ func NewPlayer(name string, hitpoints string, money string) Player {
 //PlayerCheck allows the player to look at their current stats when they type the "check" command.
 func PlayerCheck(p *Player) {
 	fmt.Println("\nYou take a quick peek inside yourself (and your pockets).\n" + p.Name + "\n" + p.Hitpoints + "\n" + p.Money + "\n")
+}
+
+//GameOver ends the game after the player's hitpoints reach 0.
+func GameOver(i int) {
+	fmt.Println("You died. Not the best way to end things, but an ending nonetheless.")
+	os.Exit(i)
 }

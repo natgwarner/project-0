@@ -84,11 +84,34 @@ func main() {
 	if step1 == 2 {
 		step2 := managers.Scene2(&player)
 		if step2 == 3 {
-			//managers.Scene3(&player)
+			step3 := managers.Scene3(&player)
+			if step3 == 4 {
+				//managers.Scene4(&player)
+			} else if step3 == 5 {
+				//managers.Scene5(&player)
+			} else if step3 == 6 {
+				//managers.Scene6(&player)
+			} else {
+				log.Fatal("Scene3 somehow didn't lead to the next scene.")
+			}
 		} else if step2 == 4 {
-			//managers.Scene4(&player)
+			step3 := managers.Scene4(&player)
+			if step3 == 5 {
+				//managers.Scene5(&player)
+			} else if step3 == 7 {
+				//managers.Scene7(&player)
+			} else if step3 == 8 {
+				//managers.Scene8(&player)
+			} else {
+				log.Fatal("Scene4 somehow didn't lead to the next scene.")
+			}
 		} else if step2 == 5 {
-			//managers.Scene5(&player)
+			step3 := managers.Scene5(&player)
+			if step3 == 9 {
+				//managers.Scene9(&player)
+			} else {
+				log.Fatal("Scene5 somehow didn't lead to the next scene.")
+			}
 		} else {
 			log.Fatal("Scene2 somehow didn't lead to the next scene.")
 		}
