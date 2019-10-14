@@ -74,9 +74,9 @@ illuminating the world around you to such a degree that you could hardly tell it
 in an odd fashion, their style reminescent of some grungy, dystopian future you might find in a 1970s fiction. You looked down and noticed 
 you were dressed very similar to them, and to your surprise, your left arm was completely cybernetic. You shuddered as you imagined what your hair might look like 
 as you began to walk about the street, looking around as you did your best to dodge the crowd. You spotted several locations of interest but only a few 
-really caught your eye: towering over the city hub was a skyscraper marked with a large '107', to the left of it you saw what appeared to be a nightclub, named in a 
-language you couldn't understand, and to the right of it was a humble info kiosk. Each likely held answers as to where and when you were, but the kiosk didn't seem 
-too terribly interesting. You made up your mind and you travelled to the...`+"\n",
+really caught your eye: towering over the city hub was a skyscraper marked with a large '107', to the left of it you saw what appeared to be a nightclub, named 'Paradiso', 
+and to the right of it was a humble info kiosk. Each likely held answers as to where and when you were, but the kiosk didn't seem too terribly interesting. 
+You made up your mind and you travelled to the...`+"\n",
 	)
 
 	a := 0
@@ -302,6 +302,193 @@ noticing that you somehow weren't bleeding, but you were still in incredible pai
 			}
 		default:
 			fmt.Println("You decided against that. You wouldn't wanna incite this girl.")
+		}
+	}
+	return selection
+}
+
+//Scene6 is the sewer hideout scene.
+func Scene6(p *Player) int {
+	io.WriteString(os.Stdout,
+		`You followed the mysterious girl across the streets as she quickly weaved through the crowd, leaving you struggling to keep up. 
+She led you into a large, dark alley which connected into several smaller alleys, almost like a labyrinth of buildings. You picked 
+up the pace as you were determined not to lose her, watching her as he lifted a sewer cover and dropped down. You weren't excited about going after her, 
+but you pressed on anyway, dropping down the hole with a thud as the girl turned back to look at you, pressing a finger to her lips to shush you. 
+You nodded and followed her to a small metal door which she knocked on in a peculiar way, likely as a password. The door slowly creaked open 
+and you walked inside. You stayed close to her as you looked around, seeing people practicing hand to hand combat, firing guns at a small range, 
+and moving supplies back and forth from an underground river deep within the sewer. You were led to a small office and you couldn't help but 
+notice the almost completely cybernetic man sitting at the desk before you, his eyes glowing as red as the end of his cigar as he smoked it, grunting at the girl as 
+she brought you in. "Who's this?" "This one's saying they're wanting to stir up some trouble," she replied. You couldn't remember saying any 
+such thing as the terminator in front of you looked you over, nodding to you as he saw your arm. "If it ain't obvious to you, we're starting 
+up a rebellion here. You might think us terrorists or somethin', but those EdenTech suits are the true enemies of the state. They've been 
+screwing over people since before the turn of the 22nd century, and we're gettin' sick of it. Ava here's told me she ain't never seen you around before, 
+and you're just unassuming enough that we may have a job for someone like you. You wanna help push this city in the right direction?" he asked you, 
+leaning forwards in his chair, his red eyes staring into yours intently. You weren't sure whether to take his assessment of you as a compliment, 
+and you were more than a bit confused, somehow finding yourself in the middle of a revolution. You looked over at Ava and she rolled her eyes, 
+saying, "Just git on with it, already." This boiled down to a simple yes or no, but you were uneasy about what might happen if you declined. 
+You decided your answer was going to be...`+"\n",
+	)
+
+	a := 0
+	selection := 0
+
+	for {
+		if a != 0 {
+			break
+		}
+
+		scanner := bufio.NewScanner(os.Stdin)
+		scanner.Scan()
+		line := scanner.Text()
+
+		switch line {
+		case "hint":
+			fmt.Println("Your options are 'yes' and 'no'. Not sure why you needed a hint for this one.")
+		case "check":
+			PlayerCheck(p)
+		case "backpack":
+			InventoryCheck()
+		case "search":
+			fmt.Println("That's probably not a good idea.")
+		case "yes":
+			selection = 10
+			a++
+		case "no":
+			selection = 11
+			a++
+		default:
+			fmt.Println("You had best just give them a clear yes or no.")
+		}
+	}
+	return selection
+}
+
+//Scene7 is the bartender conversation.
+func Scene7(p *Player) int {
+	io.WriteString(os.Stdout,
+		`You head over to the bar, deciding that the bartender might be your best bet at understanding your situation. You took a seat and a hovering, happy 
+happy looking robot greeted you. You noticed his nametag read 'Barry :)'. "Hi there! I'm the B4R bartending bot, but you can call me Barry! What can I make for 
+you today? Perhaps some coke and vodka, or the house's special oil?" His voice was the most annoying thing you'd ever heard, and you knew you definitely didn't 
+want anything to do with that oil. You calmly asked Barry where you were, and he replied, "You're at club Paradiso, friend! Our little heaven on earth!" You 
+began to rub your temples and decided that you should have been more specific. You ask Barry what city you were in. "Oh! You're in the city of New Shibuya, 
+buddy! After it was wiped off the map in the late 21st century EdenTech built it back from the ground up to be their new headquarters! Apparently their CEO has 
+a huge thing for eastern culture and --" You let the bot drone on as you can't bear to pay attention to him anymore. So you were in Shibuya, or the 'New' one, anyway. 
+You were curious as to how you ended up in Japan or why you were there, but even more curious as to why there seemed to be no trace of the Japanese language in sight. 
+You struggled to think as Barry kept talking, however, he slowly began to float upwards as he spoke, eventually colliding with the ceiling of his bar with a loud clang. 
+"Ouch!" he said cheerfully as he floated back down to talk to you some more. "So what brings you here? I've been here for a while you know. I was made in the year --" 
+You quickly push Barry out of your senses before he notices your frustration. "Aw, I'm sorry. It's just that no one's come to talk with me in a while. I'd really love 
+it if we could keep chatting." You begin to feel slightly bad for the bot as you had noticed you had been the only one seated there, but you also weren't sure if 
+you could take much more of this abuse. You could either stay a while and listen, or leave immediately and pretend you had never met Barry. You decided to...`+"\n",
+	)
+
+	a := 0
+	attempts := 0
+	selection := 0
+
+	for {
+		if a != 0 {
+			break
+		}
+
+		scanner := bufio.NewScanner(os.Stdin)
+		scanner.Scan()
+		line := scanner.Text()
+
+		switch line {
+		case "hint":
+			fmt.Println("Your options are 'stay' or 'leave'.")
+		case "check":
+			PlayerCheck(p)
+		case "backpack":
+			InventoryCheck()
+		case "search":
+			if attempts < 1 {
+				fmt.Println("You find that someone had left their belongings on the table and you weren't surprised in the slightest. You take their cards for yourself.")
+				GetMoney(3000, p)
+				attempts++
+			} else {
+				fmt.Println("There doesn't seem to be anything else here that you can take.")
+			}
+		case "stay":
+			fmt.Println("You decide to stay with Barry. For all your compassion, you slowly succumb as he literally talks you to death. Game over.")
+			os.Exit(7)
+		case "leave":
+			selection = 12
+			a++
+		default:
+			fmt.Println("That doesn't seem like the right call right now.")
+		}
+	}
+	return selection
+}
+
+//Scene8 is the conversation with the thugs.
+func Scene8(p *Player) int {
+	io.WriteString(os.Stdout,
+		`You approached the thugs as they all turned to look at you, giving you the nastiest stink eyes you had ever seen. The one you had bumped into earlier 
+stepped up, crossing his arms in front of you. "Ya got some nerve, punk. I oughta beat you for pushing into me like that," he growled, making you shudder a bit. 
+You calmed yourself and explained that it was an accident. You were new here, and you simply wanted to know where you were. The lead thug started laughing 
+and his cronies followed suit, their bellows almost as loud as the music as you tilted your head in confusion. "Look boys, we got a freshie! Listen punk, I'm gonna 
+let you in on a little secret. Me and my boys are not people to be messed with, and I think I'm gonna teach you that real quick. He reaches down and quickly grabs 
+you by your shirt, lifting you up into the air as you sruggled, unable to break free from his grip. "You're gonna pay up 300 credits for your little misstep earler, 
+and if you don't, I'm gonna beat your lights out. What's it gonna be, freshie?" You kept struggling against his hold as you assessed your options. You really didn't 
+want to give this guy any money, but you definitely couldn't take him in a fight. Maybe you could go for a sucker punch -- hit him before he hits you and break free, 
+but if that went sideways you knew you'd be in trouble. What did you do?`+"\n",
+	)
+
+	a := 0
+	selection := 0
+
+	for {
+		if a != 0 {
+			break
+		}
+
+		scanner := bufio.NewScanner(os.Stdin)
+		scanner.Scan()
+		line := scanner.Text()
+
+		switch line {
+		case "hint":
+			fmt.Println("Your options are 'pay' or 'fight'.")
+		case "check":
+			PlayerCheck(p)
+		case "backpack":
+			InventoryCheck()
+		case "search":
+			fmt.Println("You're being held in the air by a man who's built like a tank. Searching isn't a viable option for you.")
+		case "pay":
+			if Money < 300 {
+				fmt.Println("You told the thug you didn't have that kind of money. He shrugged with a grunt, then promptly hit you in the face.")
+				fmt.Println("You took 25 damage and lost conciousness.")
+				TakeDamage(25, p)
+				if Hp <= 0 {
+					GameOver(8)
+				}
+				selection = 13
+				a++
+			} else {
+				fmt.Println("You decided to give the thug what he wanted.")
+				GetMoney(-300, p)
+				fmt.Println(`"Good. If more punks paid up we'd have to beat less of 'em. Get out of my sight."`)
+				fmt.Println("You were released from his grip and pushed away, landing on your back. You brushed yourself off and headed for the bar.")
+				selection = 7
+				a++
+			}
+		case "fight":
+			fmt.Println("You decided to fight back, and you gave the thug a swift kick between the legs.")
+			fmt.Println("You were horrified to hear a clang of metal as your foot made contact, the thug laughing heartily at you.")
+			fmt.Println(`"You think I'd be that stupid, kid? Now you're gonna get what you deserve."`)
+			fmt.Println("The thug pummeled you hard, dealing 45 damage and knocking you out cold. You shouldn't pick fights you can't win.")
+			TakeDamage(45, p)
+			if Hp <= 0 {
+				GameOver(8)
+			}
+			selection = 13
+			a++
+
+		default:
+			fmt.Println("You haven't the time to think of something more creative.")
 		}
 	}
 	return selection
