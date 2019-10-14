@@ -153,18 +153,18 @@ or the info kiosk from here.`+"\n",
 
 		switch line {
 		case "hint":
-			fmt.Println("Your options are 'follow', 'go to ngihtclub', and 'go to kiosk'.")
+			fmt.Println("Your options are 'follow', 'go to nightclub', and 'go to kiosk'.")
 		case "check":
 			PlayerCheck(p)
 		case "backpack":
 			InventoryCheck()
 		case "search":
 			if attempts < 1 {
-				fmt.Println("You take a look around you and find a flyer for EdenTech on the ground.")
+				fmt.Println("You take a look around you and find a flyer for EdenTech on the ground, which you take.")
 				InventoryAdd("EdenTech Flyer")
 				attempts++
 			} else {
-				fmt.Println("You quickly scan the area for anything interesting, but you didn't find anything.")
+				fmt.Println("You quickly scan the area for something interesting, but you didn't find anything.")
 			}
 		case "follow":
 			selection = 6
