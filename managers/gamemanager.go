@@ -430,7 +430,7 @@ stepped up, crossing his arms in front of you. "Ya got some nerve, punk. I ought
 You calmed yourself and explained that it was an accident. You were new here, and you simply wanted to know where you were. The lead thug started laughing 
 and his cronies followed suit, their bellows almost as loud as the music as you tilted your head in confusion. "Look boys, we got a freshie! Listen punk, I'm gonna 
 let you in on a little secret. Me and my boys are not people to be messed with, and I think I'm gonna teach you that real quick. He reaches down and quickly grabs 
-you by your shirt, lifting you up into the air as you sruggled, unable to break free from his grip. "You're gonna pay up 300 credits for your little misstep earler, 
+you by your shirt, lifting you up into the air as you struggled, unable to break free from his grip. "You're gonna pay up 300 credits for your little misstep earler, 
 and if you don't, I'm gonna beat your lights out. What's it gonna be, freshie?" You kept struggling against his hold as you assessed your options. You really didn't 
 want to give this guy any money, but you definitely couldn't take him in a fight. Maybe you could go for a sucker punch -- hit him before he hits you and break free, 
 but if that went sideways you knew you'd be in trouble. What do you do?`+"\n",
