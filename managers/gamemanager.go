@@ -75,7 +75,7 @@ in an odd fashion, their style reminescent of some grungy, dystopian future you 
 you were dressed very similar to them, and to your surprise, your left arm was completely cybernetic. You shuddered as you imagined what your hair might look like 
 as you began to walk about the street, looking around as you did your best to dodge the crowd. The first thing you noticed was a large skyscraper marked with a '107',
 to the left of it you saw what appeared to be a nightclub named 'Paradiso', and to the right of it was a humble info kiosk. Each likely held answers as to where and when you were,
-but the skyscraper appeared to be closed for now. You decided you could either visit the nightclub or the kiosk, and you travelled to the...`+"\n",
+but the skyscraper appeared to be closed for now. You travelled to the...`+"\n",
 	)
 
 	a := 0
@@ -111,6 +111,9 @@ but the skyscraper appeared to be closed for now. You decided you could either v
 			a++
 		case "go to kiosk":
 			selection = 5
+			a++
+		case "go to skyscraper":
+			selection = 3
 			a++
 		default:
 			fmt.Println("You can't think of a reason why you would want to do that right now.")
