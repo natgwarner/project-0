@@ -86,11 +86,145 @@ func main() {
 		if step2 == 3 {
 			step3 := managers.Scene3(&player)
 			if step3 == 4 {
-				//managers.Scene4(&player)
+				step4 := managers.Scene4(&player)
+				if step4 == 5 {
+					step5 := managers.Scene5(&player)
+					if step5 == 9 {
+						step6 := managers.Scene9(&player)
+						if step6 == 3 {
+							fmt.Println("You decide to follow the mysterious girl.")
+							step7 := managers.Scene6(&player)
+							if step7 == 10 {
+								step8 := managers.Scene10(&player)
+								if step8 == 12 {
+									managers.Scene12(&player)
+								} else if step8 == 13 {
+									managers.Scene13(&player)
+								} else {
+									log.Fatal("Scene10 somehow didn't lead to the next scene.")
+								}
+							} else if step7 == 11 {
+								step8 := managers.Scene11(&player)
+								if step8 == 14 {
+									managers.Scene14(&player)
+								} else {
+									log.Fatal("Scene11 somehow didn't lead to the next scene.")
+								}
+							} else {
+								log.Fatal("Scene6 somehow didn't lead to the next scene.")
+							}
+						} else {
+							log.Fatal("Scene9 somehow didn't lead to the next scene.")
+						}
+					} else {
+						log.Fatal("Scene5 somehow didn't lead to the next scene.")
+					}
+				} else if step4 == 7 {
+					step5 := managers.Scene7(&player)
+					if step5 == 3 {
+						fmt.Println("You decide to follow the mysterious girl.")
+						step6 := managers.Scene6(&player)
+						if step6 == 10 {
+							step7 := managers.Scene10(&player)
+							if step7 == 12 {
+								managers.Scene12(&player)
+							} else if step7 == 13 {
+								managers.Scene13(&player)
+							} else {
+								log.Fatal("Scene10 somehow didn't lead to the next scene.")
+							}
+						} else if step6 == 11 {
+							step7 := managers.Scene11(&player)
+							if step7 == 14 {
+								managers.Scene14(&player)
+							} else {
+								log.Fatal("Scene11 somehow didn't lead to the next scene.")
+							}
+						} else {
+							log.Fatal("Scene6 somehow didn't lead to the next scene.")
+						}
+					} else {
+						log.Fatal("Scene7 somehow didn't lead to the next scene.")
+					}
+				} else if step4 == 8 {
+					step5 := managers.Scene8(&player)
+					if step5 == 3 {
+						fmt.Println("You decide to follow the mysterious girl.")
+						step6 := managers.Scene6(&player)
+						if step6 == 10 {
+							step7 := managers.Scene10(&player)
+							if step7 == 12 {
+								managers.Scene12(&player)
+							} else if step7 == 13 {
+								managers.Scene13(&player)
+							} else {
+								log.Fatal("Scene10 somehow didn't lead to the next scene.")
+							}
+						} else if step6 == 11 {
+							step7 := managers.Scene11(&player)
+							if step7 == 14 {
+								managers.Scene14(&player)
+							} else {
+								log.Fatal("Scene11 somehow didn't lead to the next scene.")
+							}
+						} else {
+							log.Fatal("Scene6 somehow didn't lead to the next scene.")
+						}
+					}
+				} else {
+					log.Fatal("Scene4 somehow didn't lead to the next scene.")
+				}
 			} else if step3 == 5 {
-				//managers.Scene5(&player)
+				step4 := managers.Scene5(&player)
+				if step4 == 9 {
+					step5 := managers.Scene9(&player)
+					if step5 == 3 {
+						fmt.Println("You decide to follow the mysterious girl.")
+						step6 := managers.Scene6(&player)
+						if step6 == 10 {
+							step7 := managers.Scene10(&player)
+							if step7 == 12 {
+								managers.Scene12(&player)
+							} else if step7 == 13 {
+								managers.Scene13(&player)
+							} else {
+								log.Fatal("Scene10 somehow didn't lead to the next scene.")
+							}
+						} else if step6 == 11 {
+							step7 := managers.Scene11(&player)
+							if step7 == 14 {
+								managers.Scene14(&player)
+							} else {
+								log.Fatal("Scene11 somehow didn't lead to the next scene.")
+							}
+						} else {
+							log.Fatal("Scene6 somehow didn't lead to the next scene.")
+						}
+					}
+				} else {
+					log.Fatal("Scene5 somehow didn't lead to the next scene.")
+				}
 			} else if step3 == 6 {
-				//managers.Scene6(&player)
+				step4 := managers.Scene6(&player)
+				if step4 == 10 {
+					step5 := managers.Scene10(&player)
+					if step5 == 12 {
+						managers.Scene12(&player)
+					} else if step5 == 13 {
+						managers.Scene13(&player)
+					} else {
+						log.Fatal("Scene10 somehow didn't lead to the next scene.")
+					}
+				} else if step4 == 11 {
+					step5 := managers.Scene11(&player)
+					if step5 == 14 {
+						managers.Scene14(&player)
+					} else {
+						log.Fatal("Scene11 somehow didn't lead to the next scene.")
+					}
+				} else {
+					log.Fatal("Scene6 somehow didn't lead to the next scene.")
+				}
 			} else {
 				log.Fatal("Scene3 somehow didn't lead to the next scene.")
 			}

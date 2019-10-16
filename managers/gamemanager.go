@@ -646,7 +646,7 @@ world begins to fade from your view, the sounds around you slowly muting as you 
 //Scene13 is the order ending.
 func Scene13(p *Player) {
 	io.WriteString(os.Stdout,
-		`You recall the knife you so graciously obtained from the info clerk earlier. With a shaking hand you quickly reach into your pocket and pull it out, 
+		`You recall the knife you so graciously obtained from the info clerk earlier. With a shaking hand you reach into your pocket and pull it out, 
 quickly thrusting it into Ava's chest before she can react. She doesn't fight her fate as she quietly slumps over, falling onto her back. You cover your mouth 
 in horror at what you had just done, but compose yourself before anyone notices your crime. You throw the satchel on top of her for the police to find, and you 
 duck into an alley just as her body is noticed. You begin to hear a siren as you delve deeper into the maze of buildings, finally settling on somewhere to rest 
