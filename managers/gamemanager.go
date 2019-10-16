@@ -366,7 +366,7 @@ You decided your answer was going to be...`+"\n",
 func Scene7(p *Player) int {
 	io.WriteString(os.Stdout,
 		`You head over to the bar, deciding that the bartender might be your best bet at understanding your situation. You took a seat and a hovering, happy 
-happy looking robot greeted you. You noticed his nametag read 'Barry :)'. "Hi there! I'm the B4R bartending bot, but you can call me Barry! What can I make for 
+looking robot greeted you. You noticed his nametag read 'Barry :)'. "Hi there! I'm the B4R bartending bot, but you can call me Barry! What can I make for 
 you today? Perhaps some coke and vodka, or the house's special oil?" His voice was the most annoying thing you'd ever heard, and you knew you definitely didn't 
 want anything to do with that oil. You calmly asked Barry where you were, and he replied, "You're at club Paradiso, friend! Our little heaven on earth!" You 
 began to rub your temples and decided that you should have been more specific. You ask Barry what city you were in. "Oh! You're in the ward of New Shibuya, 
