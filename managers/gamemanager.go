@@ -43,7 +43,7 @@ You thought to yourself, and you knew exactly what you had to do.`+"\n",
 		case "check":
 			PlayerCheck(p)
 		case "backpack":
-			InventoryCheck()
+			Backpack()
 		case "search":
 			fmt.Println("You tried to scan the area for anything useful, but the crowd made it impossible.")
 		default:
@@ -97,7 +97,7 @@ but the skyscraper appeared to be closed for now. You decided you could either v
 		case "check":
 			PlayerCheck(p)
 		case "backpack":
-			InventoryCheck()
+			Backpack()
 		case "search":
 			if attempts < 1 {
 				fmt.Println("Someone rudely bumps into you, scoffing at you as they walk away. You notice a small card fall from their bag and take it.")
@@ -153,7 +153,7 @@ or the info kiosk from here.`+"\n",
 		case "check":
 			PlayerCheck(p)
 		case "backpack":
-			InventoryCheck()
+			Backpack()
 		case "search":
 			if attempts < 1 {
 				fmt.Println("You take a look around you and find a flyer for EdenTech on the ground, which you take.")
@@ -211,7 +211,7 @@ You also supposed you could ignore caution and ask your new, threatening, friend
 		case "check":
 			PlayerCheck(p)
 		case "backpack":
-			InventoryCheck()
+			Backpack()
 		case "search":
 			if attempts < 1 {
 				fmt.Println("You find a bottle of pain pills on the ground. Kind of shady and disgusting, but you decide to take one. You gain 25 hp.")
@@ -269,7 +269,7 @@ but you could always ignore her and try to run.`+"\n",
 		case "check":
 			PlayerCheck(p)
 		case "backpack":
-			InventoryCheck()
+			Backpack()
 		case "search":
 			fmt.Println("You'd better not make any sudden movements. You might catch that knife.")
 		case "where am i?":
@@ -343,7 +343,7 @@ You decided your answer was going to be...`+"\n",
 		case "check":
 			PlayerCheck(p)
 		case "backpack":
-			InventoryCheck()
+			Backpack()
 		case "search":
 			fmt.Println("That's probably not a good idea.")
 		case "yes":
@@ -396,7 +396,7 @@ you could take much more of this abuse. You could either stay a while and listen
 		case "check":
 			PlayerCheck(p)
 		case "backpack":
-			InventoryCheck()
+			Backpack()
 		case "search":
 			if attempts < 1 {
 				fmt.Println("You find that someone had left their belongings on the table and you weren't surprised in the slightest. You take their cards for yourself.")
@@ -409,7 +409,8 @@ you could take much more of this abuse. You could either stay a while and listen
 			fmt.Println("You decide to stay with Barry. For all your compassion, you slowly succumb as he literally talks you to death. Game over.")
 			os.Exit(7)
 		case "leave":
-			selection = 12
+			fmt.Println("You make the incredibly sound decision of bailing on Barry, and you decide to head for the skyscraper.")
+			selection = 3
 			a++
 		default:
 			fmt.Println("That doesn't seem like the right call right now.")
@@ -450,7 +451,7 @@ but if that went sideways you knew you'd be in trouble. What do you do?`+"\n",
 		case "check":
 			PlayerCheck(p)
 		case "backpack":
-			InventoryCheck()
+			Backpack()
 		case "search":
 			fmt.Println("You're being held in the air by a man who's built like a tank. Searching isn't a viable option for you.")
 		case "pay":
@@ -461,7 +462,8 @@ but if that went sideways you knew you'd be in trouble. What do you do?`+"\n",
 				if Hp <= 0 {
 					GameOver(8)
 				}
-				selection = 13
+				fmt.Println("After a little while, you wake up on the cold concrete outside the club. With an aching head, you make for the skyscraper.")
+				selection = 3
 				a++
 			} else {
 				fmt.Println("You decided to give the thug what he wanted.")
@@ -480,11 +482,12 @@ but if that went sideways you knew you'd be in trouble. What do you do?`+"\n",
 			if Hp <= 0 {
 				GameOver(8)
 			}
-			selection = 13
+			fmt.Println("After a little while, you wake up on the cold concrete outside the club. With an aching head, you make for the skyscraper.")
+			selection = 3
 			a++
 
 		default:
-			fmt.Println("You haven't the time to think of something more creative.")
+			fmt.Println("You're not in a position to think of something more creative.")
 		}
 	}
 	return selection
@@ -544,23 +547,21 @@ You wondered if you could somehow get away, but you figured Ava would probably t
 		case "check":
 			PlayerCheck(p)
 		case "backpack":
-			InventoryCheck()
+			Backpack()
 		case "search":
 			fmt.Println("You try desperately to search for some other way out, but you find none.")
 		case "plant bomb":
 			fmt.Println("You embrace the Chaos of revolution.")
-			selection = 14
+			selection = 12
 			a++
 		case "escape":
-			for i := 0; i < len(Inventory); i++ {
-				if Inventory[i] == "Knife" {
-					fmt.Println("You fight for the safety of Order.")
-					selection = 15
-					a++
-				} else {
-					selection = 16
-					a++
-				}
+			if InventoryCheck("Knife") == true {
+				fmt.Println("You embrace the comfort of Order.")
+				selection = 13
+				a++
+			} else {
+				fmt.Println("Seeing no other choice, you attempt to run away. Ava rolls her eyes, an indifferent expression on her face as she shoots you.")
+				GameOver(10)
 			}
 		default:
 			fmt.Println("In your panic, you forget what it was you were just going to try to do.")
@@ -572,7 +573,13 @@ You wondered if you could somehow get away, but you figured Ava would probably t
 //Scene11 is the sewer escape scene.
 func Scene11(p *Player) int {
 	io.WriteString(os.Stdout,
-		``+"\n",
+		`You shake your head no, uninterested in anything they might have asked of you. The cybernetic man scoffs and takes a long drag from his 
+cigar, slamming his fist on the desk. "Shame, kid. Now we've gotta kill ya." He pointed at Ava, and then at you. "Take care of them, NOW." She nods 
+and you quickly turn tail and run as she draws her pistol. She fires at you as you run out the door but misses, and you quickly sprint back out where 
+you came from as the others in the hideout looked on in confusion. You hear Ava scream orders to hunt you down as you began to hear a thunder of footsteps 
+chasing after you down the waterways. You were letting your adrenaline carry you as you barreled down the sewers with reckless abandon, desperate to get 
+away from your pursuers as quickly as possible. You scanned the sewers for any semblance of a hiding place, but it was proving difficult. You knew you 
+had to keep moving no matter the cost, but you were beginning to get tired. A hiding place might save you -- you just had to find one first. You...`+"\n",
 	)
 
 	a := 0
@@ -590,28 +597,72 @@ func Scene11(p *Player) int {
 
 		switch line {
 		case "hint":
-			fmt.Println("Your options are 'stay' or 'leave'.")
+			if attempts < 1 {
+				fmt.Println("Your only option for now is 'keep running'.")
+			} else {
+				fmt.Println("Your options are 'keep running' and 'hide'.")
+			}
 		case "check":
 			PlayerCheck(p)
 		case "backpack":
-			InventoryCheck()
+			Backpack()
 		case "search":
 			if attempts < 1 {
-				fmt.Println("You find that someone had left their belongings on the table and you weren't surprised in the slightest. You take their cards for yourself.")
-				GetMoney(3000, p)
+				fmt.Println("You're able to locate a crack in the wall ahead that you think you could squeeze into.")
+				fmt.Println("'hide' option added.")
 				attempts++
 			} else {
-				fmt.Println("There doesn't seem to be anything else here that you can take.")
+				fmt.Println("You've no time to be picky. If you want to hide, the wall is your only shot.")
 			}
-		case "stay":
-			fmt.Println("You decide to stay with Barry. For all your compassion, you slowly succumb as he literally talks you to death. Game over.")
-			os.Exit(7)
-		case "leave":
-			selection = 12
-			a++
+		case "keep running":
+			fmt.Println("You keep running as fast as you can, but eventually the rebels catch up to you. With no way out, you beg for mercy, of which there was none.")
+			GameOver(11)
+		case "hide":
+			if attempts < 1 {
+				fmt.Println("You haven't found a hiding spot yet.")
+			} else {
+				fmt.Println("You embrace the neutrality of Pacifism.")
+				selection = 14
+				a++
+			}
 		default:
-			fmt.Println("That doesn't seem like the right call right now.")
+			fmt.Println("You've no time to think about something like that right now.")
 		}
 	}
 	return selection
+}
+
+//Scene12 is the chaos ending.
+func Scene12(p *Player) {
+	io.WriteString(os.Stdout,
+		`You decide to plant the bomb. After fiddling around with it a bit, you stick the duct-taped C4 to the designated support beam. You and Ava make 
+a break for it before you're spotted, and you make your way back to the hideout. Once the boss ensures everyone in the resistance is safely inside, he triggers 
+the detonator. The walls around you shake as you can feel the '107' tower crumbling down, the room erupting in a roar as the rebels celebrate a small victory 
+over their corporate overlords. You're unsure of the impact of what you just did, but you assure yourself that it was the right choice. Ava smiles as you as the 
+world begins to fade from your view, the sounds around you slowly muting as you awaken with a breath. The dream is done, and the game is over.`+"\n",
+	)
+}
+
+//Scene13 is the order ending.
+func Scene13(p *Player) {
+	io.WriteString(os.Stdout,
+		`You recall the knife you so graciously obtained from the info clerk earlier. With a shaking hand you quickly reach into your pocket and pull it out, 
+quickly thrusting it into Ava's chest before she can react. She doesn't fight her fate as she quietly slumps over, falling onto her back. You cover your mouth 
+in horror at what you had just done, but compose yourself before anyone notices your crime. You throw the satchel on top of her for the police to find, and you 
+duck into an alley just as her body is noticed. You begin to hear a siren as you delve deeper into the maze of buildings, finally settling on somewhere to rest 
+as you find a secluded spot, sitting on the ground and hugging your knees to your chest. You try to assure yourself that you had done the right thing, knowing 
+that you had saved all of those people in the square by taking one life and prolonging a bloody revolution a little while longer. Suddenly, your vision begins 
+to fade, the sounds around you being drowned out by silence as you awaken with a gasp. The dream is done, and the game is over.`+"\n",
+	)
+}
+
+//Scene14 is the pacifist ending.
+func Scene14(p *Player) {
+	io.WriteString(os.Stdout,
+		`You managed to evade your pursuers enough to quickly hide in the wall's opening. You keep silent and stay your breath as the group of rebels pass you by, 
+letting out a low sigh of relief when you no longer hear their footsteps. You decide to remain there for a while, keeping yourself scarce while you were hunted. 
+You eventually emerge from your hiding place, finding your way back to the surface through a different exit. You manage to make your way outside the city, knowing
+setting foot there again may be your last mistake. As you try to decide on your next move, your vision begins to fade to black, your senses slowly dissipating to 
+nothingness. You slowly awaken, your eyes fluttering as they take in the morning sun. The dream is done, and the game is over.`+"\n",
+	)
 }
