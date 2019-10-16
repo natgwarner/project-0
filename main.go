@@ -61,24 +61,7 @@ func main() {
 	}
 
 	player := managers.NewPlayer(managers.Playername, managers.Playerhp, managers.Playermoney)
-	/*
-		managers.PlayerCheck(&player)
 
-		fmt.Println("You clumsily trip and fall on your face, receiving 20 damage.")
-		managers.TakeDamage(20, &player)
-		fmt.Println("However, while you writhe against the concrete, you spot a card worth 2000 credits, lifting your spirits!")
-		managers.GetMoney(2000, &player)
-
-		managers.PlayerCheck(&player)
-		managers.InventoryCheck()
-		managers.InventoryAdd("Sword")
-		managers.InventoryCheck()
-	*/
-	/*if managers.Scene1(&player) == 2 {
-		managers.Scene2(&player)
-	} else {
-		panic("It's borked.")
-	}*/
 	step1 := managers.Scene1(&player)
 
 	if step1 == 2 {
