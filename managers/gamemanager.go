@@ -73,10 +73,9 @@ your mouth hung open with wonder at the sight of the most vibrant city you had e
 illuminating the world around you to such a degree that you could hardly tell it was late into the night. The people around you were dressed 
 in an odd fashion, their style reminescent of some grungy, dystopian future you might find in a 1970s fiction. You looked down and noticed 
 you were dressed very similar to them, and to your surprise, your left arm was completely cybernetic. You shuddered as you imagined what your hair might look like 
-as you began to walk about the street, looking around as you did your best to dodge the crowd. You spotted several locations of interest but only a few 
-really caught your eye: towering over the city hub was a skyscraper marked with a large '107', to the left of it you saw what appeared to be a nightclub, named 'Paradiso', 
-and to the right of it was a humble info kiosk. Each likely held answers as to where and when you were, but the kiosk didn't seem too terribly interesting. 
-You made up your mind and you travelled to the...`+"\n",
+as you began to walk about the street, looking around as you did your best to dodge the crowd. The first thing you noticed was a large skyscraper marked with a '107',
+to the left of it you saw what appeared to be a nightclub named 'Paradiso', and to the right of it was a humble info kiosk. Each likely held answers as to where and when you were,
+but the skyscraper appeared to be closed for now. You decided you could either visit the nightclub or the kiosk, and you travelled to the...`+"\n",
 	)
 
 	a := 0
@@ -94,7 +93,7 @@ You made up your mind and you travelled to the...`+"\n",
 
 		switch line {
 		case "hint":
-			fmt.Println("Your options are 'go to skyscraper', 'go to nightclub', and 'go to kiosk'.")
+			fmt.Println("Your options are 'go to nightclub' and 'go to kiosk'.")
 		case "check":
 			PlayerCheck(p)
 		case "backpack":
@@ -107,9 +106,6 @@ You made up your mind and you travelled to the...`+"\n",
 			} else {
 				fmt.Println("The crowd is too busy -- you can't find anything of value.")
 			}
-		case "go to skyscraper":
-			selection = 3
-			a++
 		case "go to nightclub":
 			selection = 4
 			a++
@@ -126,7 +122,7 @@ You made up your mind and you travelled to the...`+"\n",
 //Scene3 is the skyscraper area.
 func Scene3(p *Player) int {
 	io.WriteString(os.Stdout,
-		`You approach the skyscraper and notice that there doesn't seem to be anyone entering or leaving. You find this curious, but that thought is quickly
+		`You approach the skyscraper and find that the entrance is in fact locked as they fail to slide open. You find this curious, but that thought is quickly
 pushed from your mind as you recoil in horror. To your dismay, the skyscraper has glass paneling, and your hair looks about ten times more awful than you could
 have imagined. You sigh as you come to terms with your truly disgusting appearance before someone approaches you from the side. "Yo, you tryin' to get
 in here?" You turned and saw a woman who's hair was somehow worse than your own, chewing gum and blowing a large bubble as it broke with a pop. She turned
@@ -218,8 +214,8 @@ You also supposed you could ignore caution and ask your new, threatening, friend
 			InventoryCheck()
 		case "search":
 			if attempts < 1 {
-				fmt.Println("You saw an unbroken glowstick on the ground and decided to pick it up. Maybe it would be useful later.")
-				InventoryAdd("Glowstick")
+				fmt.Println("You find a bottle of pain pills on the ground. Kind of shady and disgusting, but you decide to take one. You gain 25 hp.")
+				TakeDamage(-25, p)
 				attempts++
 			} else {
 				fmt.Println("This area is a bit too crowded for thorough searching.")
@@ -370,7 +366,7 @@ func Scene7(p *Player) int {
 happy looking robot greeted you. You noticed his nametag read 'Barry :)'. "Hi there! I'm the B4R bartending bot, but you can call me Barry! What can I make for 
 you today? Perhaps some coke and vodka, or the house's special oil?" His voice was the most annoying thing you'd ever heard, and you knew you definitely didn't 
 want anything to do with that oil. You calmly asked Barry where you were, and he replied, "You're at club Paradiso, friend! Our little heaven on earth!" You 
-began to rub your temples and decided that you should have been more specific. You ask Barry what city you were in. "Oh! You're in the city of New Shibuya, 
+began to rub your temples and decided that you should have been more specific. You ask Barry what city you were in. "Oh! You're in the ward of New Shibuya, 
 buddy! After it was wiped off the map in the late 21st century EdenTech built it back from the ground up to be their new headquarters! Apparently their CEO has 
 a huge thing for eastern culture and --" You let the bot drone on as you can't bear to pay attention to him anymore. So you were in Shibuya, or the 'New' one, anyway. 
 You were curious as to how you ended up in Japan or why you were there, but even more curious as to why there seemed to be no trace of the Japanese language in sight. 
@@ -433,7 +429,7 @@ let you in on a little secret. Me and my boys are not people to be messed with, 
 you by your shirt, lifting you up into the air as you sruggled, unable to break free from his grip. "You're gonna pay up 300 credits for your little misstep earler, 
 and if you don't, I'm gonna beat your lights out. What's it gonna be, freshie?" You kept struggling against his hold as you assessed your options. You really didn't 
 want to give this guy any money, but you definitely couldn't take him in a fight. Maybe you could go for a sucker punch -- hit him before he hits you and break free, 
-but if that went sideways you knew you'd be in trouble. What did you do?`+"\n",
+but if that went sideways you knew you'd be in trouble. What do you do?`+"\n",
 	)
 
 	a := 0
@@ -489,6 +485,132 @@ but if that went sideways you knew you'd be in trouble. What did you do?`+"\n",
 
 		default:
 			fmt.Println("You haven't the time to think of something more creative.")
+		}
+	}
+	return selection
+}
+
+//Scene9 is the second kiosk scene.
+func Scene9(p *Player) int {
+	io.WriteString(os.Stdout,
+		`As you asked where you were, the crazy girl twitched and you saw a spark fly from her head, a bit of smoke coming out of her ear. Her demeanor 
+completely changed, going from a raving lunatic to a depressed lump. She let out a heavy sigh and leaned forward on the counter, pulling the knife out and 
+toying with it a little bit, looking up at you with tired eyes. "If you really couldn't tell by the skycraper in front of you, this is New Shibuya. It's the 
+base of operations for the EdenTech corporation. They're the guys that made me and all the other bots, and they probably made that metal arm of yours too." She 
+squinted at you, saying, "You must be pretty dumb if you don't know that. Either that or you're some kind of alien. Everyone knows who EdenTech is. I'm not 
+gonna ask, though. It would just bore me." You were thankful she didn't pry -- not that you would have known what to say anyway. Though she had nearly killed 
+you, you began to feel a bit of sympathy for this android. She had probably just been driven insane by her thankless job as an info desk clerk. She let out 
+another sigh, rolling her eyes at you as she lazily waved the knife at you. "Can ya get going? I'd really like to have some peace and quiet, and your hair bothers me." 
+Your self esteem destroyed, you slinked away from the kiosk, and you decided to go check out the skyscraper.`+"\n",
+	)
+	selection := 3
+	return selection
+}
+
+//Scene10 is the bomb steup scene.
+func Scene10(p *Player) int {
+	io.WriteString(os.Stdout,
+		`The metal man let out a synthetic laugh as you nodded in agreement, pulling the cigar from his mouth and putting it out on his desk. "Good, glad to hear it. 
+Yer job's gonna be very simple, so even if you're a complete moron you would have a hard time screwing it up." You tilted your head and wondered exactly how stupid you 
+looked as he leaned down to rummage under his desk, pulling up a satchel and tossing it to you. You noticed it was a bit heavy, and you opened it up to see a large brick 
+of C4 explosives. You looked at the man in surprise as he gave you a smirk, point at the brick with a wagging finger. "So you're gonna go to that skyscraper you paid a visit 
+to earlier, and you're gonna plant it right at one of the support beams at the base. One you've done that, you're gonna run back here and I'm gonna flip the switch. EdenTech's 
+tower of greed's gonna come down hard, and we're all gonna have a party when it does. Ava's gonna trail you to make sure you do your job." "Ugh, really? I don--" 
+The man slammed his fists on his desk, cracking it down the middle as it made the both of you jump. "You are gonna go with him to make sure he gets it done. If it goes south, 
+you need to make sure you get that C4 and bring it back. You got that?" He glared at her almost evilly, and she nodded, looking away. "Got it. Come on." She waved to you and 
+you followed her out of the sewer, keeping the satchel close as you hurried back to the skyscraper through the dark alleyways. Ava was keeping close behind as you made your way 
+back out of the maze, and you found yourself overwhelmed by your situation. You weren't sure what to do. You knew if you went through with this a lot of innocent people 
+might get hurt; you didn't forget how many were roaming in the square in front of the tower. However, if this corporation actually was bad news, you might be doing the 
+world a favor by taking out their main headquarters. You glanced back at Ava as you approached the building. She motioned for you to go plant the bomb, and you hesitated. 
+You wondered if you could somehow get away, but you figured Ava would probably try to kill you. You tried to subtley wave her over and she rushed over, her face grimacing. 
+"What are you doin'? Just plant the bomb!" If you were gonna get away, now was your last chance. Either that, or plant the bomb. You decided to...`+"\n",
+	)
+
+	a := 0
+	selection := 0
+
+	for {
+		if a != 0 {
+			break
+		}
+
+		scanner := bufio.NewScanner(os.Stdin)
+		scanner.Scan()
+		line := scanner.Text()
+
+		switch line {
+		case "hint":
+			fmt.Println("Your options are 'plant bomb' or 'escape'.")
+		case "check":
+			PlayerCheck(p)
+		case "backpack":
+			InventoryCheck()
+		case "search":
+			fmt.Println("You try desperately to search for some other way out, but you find none.")
+		case "plant bomb":
+			fmt.Println("You embrace the Chaos of revolution.")
+			selection = 14
+			a++
+		case "escape":
+			for i := 0; i < len(Inventory); i++ {
+				if Inventory[i] == "Knife" {
+					fmt.Println("You fight for the safety of Order.")
+					selection = 15
+					a++
+				} else {
+					selection = 16
+					a++
+				}
+			}
+		default:
+			fmt.Println("In your panic, you forget what it was you were just going to try to do.")
+		}
+	}
+	return selection
+}
+
+//Scene11 is the sewer escape scene.
+func Scene11(p *Player) int {
+	io.WriteString(os.Stdout,
+		``+"\n",
+	)
+
+	a := 0
+	attempts := 0
+	selection := 0
+
+	for {
+		if a != 0 {
+			break
+		}
+
+		scanner := bufio.NewScanner(os.Stdin)
+		scanner.Scan()
+		line := scanner.Text()
+
+		switch line {
+		case "hint":
+			fmt.Println("Your options are 'stay' or 'leave'.")
+		case "check":
+			PlayerCheck(p)
+		case "backpack":
+			InventoryCheck()
+		case "search":
+			if attempts < 1 {
+				fmt.Println("You find that someone had left their belongings on the table and you weren't surprised in the slightest. You take their cards for yourself.")
+				GetMoney(3000, p)
+				attempts++
+			} else {
+				fmt.Println("There doesn't seem to be anything else here that you can take.")
+			}
+		case "stay":
+			fmt.Println("You decide to stay with Barry. For all your compassion, you slowly succumb as he literally talks you to death. Game over.")
+			os.Exit(7)
+		case "leave":
+			selection = 12
+			a++
+		default:
+			fmt.Println("That doesn't seem like the right call right now.")
 		}
 	}
 	return selection
