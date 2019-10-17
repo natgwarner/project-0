@@ -62,8 +62,8 @@ func main() {
 
 	player := managers.NewPlayer(managers.Playername, managers.Playerhp, managers.Playermoney)
 
+	//The decision tree runs the game.
 	step1 := managers.Scene1(&player)
-
 	if step1 == 2 {
 		step2 := managers.Scene2(&player)
 		if step2 == 3 {
