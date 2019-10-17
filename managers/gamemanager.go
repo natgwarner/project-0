@@ -41,11 +41,11 @@ You thought to yourself, and you knew exactly what you had to do.`+"\n",
 			a++
 			selection = 2
 		case "check":
-			PlayerCheck(p)
+			fmt.Println("You can't look at yourself if your eyes are closed.")
 		case "backpack":
-			Backpack()
+			fmt.Println("How're you gonna look through your backpack if your eyes are closed?")
 		case "search":
-			fmt.Println("Your eyes are closed.")
+			fmt.Println("Your eyes are still closed.")
 		default:
 			if attempts == 0 {
 				fmt.Println("Just open your eyes.")
