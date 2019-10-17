@@ -45,7 +45,7 @@ You thought to yourself, and you knew exactly what you had to do.`+"\n",
 		case "backpack":
 			Backpack()
 		case "search":
-			fmt.Println("You tried to scan the area for anything useful, but the crowd made it impossible.")
+			fmt.Println("Your eyes are closed.")
 		default:
 			if attempts == 0 {
 				fmt.Println("Just open your eyes.")

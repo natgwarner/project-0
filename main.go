@@ -23,6 +23,7 @@ func init() {
 }
 
 func main() {
+
 	if managers.Playername == "" {
 		fmt.Println("Ready for adventure? Good. What's your name?")
 		fmt.Scanf("%s", &managers.Playername)
@@ -61,6 +62,8 @@ func main() {
 	}
 
 	player := managers.NewPlayer(managers.Playername, managers.Playerhp, managers.Playermoney)
+	/*http.HandleFunc("/playerstats", playerstats)
+	http.ListenAndServe(":1234", nil)*/
 
 	//The decision tree runs the game.
 	step1 := managers.Scene1(&player)
@@ -816,3 +819,9 @@ func main() {
 		log.Fatal("Scene1 somehow didn't lead to Scene2.")
 	}
 }
+
+/*func playerstats(response http.ResponseWriter, request *http.Request) {
+	response.Header().Set("Content-Type", "text/html")
+	output := []byte(managers.Playername <br> + managers.Playerhp + <br> + managers.Playermoney)
+	response.Write(output)
+}*/
